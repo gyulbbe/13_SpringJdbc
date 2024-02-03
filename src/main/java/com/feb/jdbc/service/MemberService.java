@@ -24,5 +24,13 @@ public class MemberService {
 	public Member findMember2(String memberId) {
 		return memberDao.findMember2(memberId);
 	}
+	
+	public int join(HashMap<String, String> params) {
+		return memberDao.join(params);
+	}
+	
+	public ArrayList<Member> memberList(HashMap<String, Object> params) {
+		return memberDao.memberList(params);
+	}
 
 }

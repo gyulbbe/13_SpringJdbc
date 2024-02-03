@@ -16,7 +16,16 @@
 <!-- ===== CSS 주의할점 : /resources/css/style.css resource안에 css파일 안에 style.css를 넣는다.  ===== -->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/style.css">
-
+<script type="text/javascript">
+	//컨트롤러에서 보낸 메세지가 있을 경우
+	window.onload = function(e){ 
+		var resultMsg = '${resultMsg}';
+		var resultCode = '${resultCode}';
+		if(resultMsg.length > 0){
+			alert(resultMsg);
+		}
+	}
+</script>
 
 <title>Login & Registration Form</title>
 </head>
@@ -27,7 +36,7 @@
 			<div class="form login">
 				<span class="title">Login</span>
 
-				<form action="<c:url value='/login/login.do'/>" method="post"
+				<form action="<c:url value='/login.do'/>" method="post"
 					onsubmit="return formCheck(this);">
 					<div class="input-field">
 						<input type="text" name="id" placeholder="Enter your email"
@@ -90,17 +99,17 @@
 			<div class="form signup">
 				<span class="title">Registration</span>
 
-				<form action="#">
+				<form action="<c:url value='/join.do'/>" method="post">
 					<div class="input-field">
-						<input type="text" placeholder="Enter your name" required>
+						<input type="text" name="memberId"  placeholder="Enter your name" required>
 						<i class="uil uil-user"></i>
 					</div>
 					<div class="input-field">
-						<input type="text" placeholder="Enter your email" required>
+						<input type="text" name="email" placeholder="Enter your email" required>
 						<i class="uil uil-envelope icon"></i>
 					</div>
 					<div class="input-field">
-						<input type="password" class="password"
+						<input type="password" name="passwd" class="password"
 							placeholder="Create a password" required> <i
 							class="uil uil-lock icon"></i>
 					</div>
@@ -119,7 +128,7 @@
 					</div>
 
 					<div class="input-field button">
-						<input type="button" value="Signup">
+						<input type="submit" value="Signup">
 					</div>
 				</form>
 
