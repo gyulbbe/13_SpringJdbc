@@ -65,5 +65,25 @@ public class MemberDaoImpl extends JdbcDaoSupport implements MemberDao {
 	public HashMap<String, Object> getMemberById(HashMap<String, String> params) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int findMember(String memberId, String email) {
+		String sql = "select count(1) from " + "lecture.member where member_id = ? and email = ?";
+		//and passwd = 이런 형식은 하면 안됨
+		int result = getJdbcTemplate().queryForObject(sql, new Object[] {memberId, email}, Integer.class);
+		return result;
+	}
+
+	@Override
+	public int updatePasswd(String passwd, String memberId, String email) {
+		String sql = "update lecture.member set passwd = ? ";
+		sql += "where member_id = ? and email = ?";
+		int result = getJdbcTemplate().update(sql, new Object[] {
+			passwd,
+			memberId,
+			email
+		});
+		return result;
 	}	
 }

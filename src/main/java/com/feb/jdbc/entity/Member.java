@@ -37,4 +37,10 @@ public class Member {
 	public void setJoinDtm(String joinDtm) {
 		this.joinDtm = joinDtm;
 	}
+	@Override
+	public String toString() {
+		return "Member [memberIdx=" + memberIdx + ", memberId=" + memberId + ", passwd=" + passwd + ", email=" + email
+				+ ", joinDtm=" + joinDtm + "]";
+	}
+	
 }

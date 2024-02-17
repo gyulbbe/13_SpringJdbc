@@ -33,6 +33,8 @@ public class MemberController {
 		return member.getMemberId();
 	}
 	
+	
+	//name빠뜨리면 나가리
 	@PostMapping("/join.do")
 	public ModelAndView join(@RequestParam HashMap<String, String> params,
 			HttpServletResponse response) {
@@ -54,6 +56,23 @@ public class MemberController {
 		mv.addObject("memberList", memberService.memberList(params));
 		mv.setViewName("list");
 		return mv;		
+	}
+	
+	@GetMapping("/findPw.do")
+	public ModelAndView findPw(@RequestParam HashMap<String, String> params) {
+		ModelAndView mv = new ModelAndView();
+		memberService.findPasswd(params);
+		boolean result = memberService.findPasswd(params);
+		
+		mv.setViewName("common/broker");
+		mv.addObject("resultCode", result);
+		mv.addObject("nextUrl", "/loginPage.do");
+		if (result) {
+			mv.addObject("resultMsg", "이메일로 임시 비밀번호 발송함.");
+		} else {
+			mv.addObject("resultMsg", "사용자가 없음.");
+		}
+		return mv;
 	}
 }
 

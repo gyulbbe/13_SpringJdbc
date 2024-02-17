@@ -24,6 +24,9 @@
 		if(resultMsg.length > 0){
 			alert(resultMsg);
 		}
+		if(resultCode == '로그인 성공'){
+			window.location.href= '<c:url value="/list.do"/>?offset=1&limit=20';
+		}
 	}
 </script>
 
@@ -39,11 +42,11 @@
 				<form action="<c:url value='/login.do'/>" method="post"
 					onsubmit="return formCheck(this);">
 					<div class="input-field">
-						<input type="text" name="id" placeholder="Enter your email"
+						<input type="text" name="memberId" placeholder="Enter your email"
 							required> <i class="uil uil-envelope icon"></i>
 					</div>
 					<div class="input-field">
-						<input type="password" name="pwd" class="password"
+						<input type="password" name="passwd" class="password"
 							placeholder="Enter your password" required> <i
 							class="uil uil-lock icon"></i> <i
 							class="uil uil-eye-slash showHidePw"></i>

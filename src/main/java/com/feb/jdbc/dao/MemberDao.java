@@ -17,4 +17,9 @@ public interface MemberDao {
 	public int checkId(HashMap<String, String> params);
 	
 	public HashMap<String, Object> getMemberById(HashMap<String, String> params);
+	
+	//사용자 아이디와 이메일로 찾음
+	public int findMember(String memberId, String email);
+	
+	public int updatePasswd(String passwd, String memberId, String email);
 }
